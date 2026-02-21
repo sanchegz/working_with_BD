@@ -14,7 +14,8 @@ CREATE TABLE users_history (
 -- Далее создадим триггерную функцию.
 
 CREATE OR REPLACE FUNCTION log_user_update()
-RETURNS TRIGGER AS $$
+RETURNS TRIGGER
+AS $$
 BEGIN
     INSERT INTO users_history(user_id, old_name, old_email)
     VALUES (OLD.id, OLD.name, OLD.email);
